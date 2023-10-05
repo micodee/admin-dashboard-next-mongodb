@@ -1,0 +1,8 @@
+react-apexcharts = for chart
+next-auth        = for auth
+mongoose         = for database
+react-icons      = for icon
+react-spinners   = for spinners
+
+npm i react-apexcharts next-auth mongoose react-icons react-spinners
+
