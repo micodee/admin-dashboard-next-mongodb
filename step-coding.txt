@@ -6,3 +6,5 @@ react-spinners   = for spinners
 
 npm i react-apexcharts next-auth mongoose react-icons react-spinners
 
+
+

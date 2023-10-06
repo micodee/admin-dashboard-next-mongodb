@@ -1,30 +1,14 @@
+import { ExtractAllVisitors } from "@/services/visitors";
 import Table from "../table";
 import { monthMapper } from "@/utils/monthMapper";
 import { visitorsTableHeaders } from "@/utils/tableVisitors";
 
-const extractAllVisitors = async () => {
-  const res = await fetch("http://localhost:3000/api/visitors/all-visitors", {
-    method: "GET",
-    cache: "no-store",
-  });
-
-  return await res.json();
-};
-
 export default async function VisitorsListing() {
-  const allVisitors = await extractAllVisitors();
-  const { data } = allVisitors || {};
+
+  const allVisitors = await ExtractAllVisitors();
+
   return (
     <>
-      {/* {data?.map((itm) => {
-        return (
-          <>
-            <p>{itm.name}</p>
-            <p>{itm.price}</p>
-          </>
-        );
-      })} */}
-
       <Table
         tableHeaderText="All Products Overview"
         tableHeaderCells={visitorsTableHeaders}
@@ -33,7 +17,9 @@ export default async function VisitorsListing() {
             ? allVisitors?.data?.map((item) => ({
                 ...item,
                 revenue: parseInt(item.price * item.sales),
-                month: monthMapper[item.month]
+                month: monthMapper[item.month],
+                device: (item.device.charAt(0).toUpperCase() + item.device.slice(1)),
+                location: (item.location.charAt(0).toUpperCase() + item.location.slice(1))
               }))
             : []
         }

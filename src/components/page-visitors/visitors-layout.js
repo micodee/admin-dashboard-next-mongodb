@@ -5,6 +5,7 @@ import Button from "../form-control/button"
 import Modal from "../modal"
 import { useRouter } from "next/navigation"
 import { VisitorsFormControls } from "@/utils/formControlsVisitors"
+import { AddVisitors } from "@/services/visitors"
 
 const initData = {
   visitors: 0,
@@ -25,15 +26,8 @@ export default function VisitorsLayout({children}) {
   async function handleAddVisitors() {
     try {
       setLoading(true)
-      const res = await fetch(`http://localhost:3000/api/visitors/add-visitors`, {
-        method: 'POST',
-        headers: {
-          "Content-Type" : "application/json"
-        },
-        body: JSON.stringify(formData)
-      })
+      await AddVisitors(formData)
 
-      await res.json()
     } catch (error) {
       console.log("error catch: ", error);
       setShowModal(false)

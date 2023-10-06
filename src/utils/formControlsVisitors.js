@@ -8,7 +8,7 @@ export const VisitorsFormControls = [
   },
   {
     id: "premiumUserNo",
-    label: "Premium Users No",
+    label: "Premium Visitors",
     componentType: "input",
     type: "number",
     placeholder: "Enter premiumUser No",

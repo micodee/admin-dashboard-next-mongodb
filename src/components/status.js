@@ -9,7 +9,9 @@ export default function Status({children}) {
   return (
     <>
      {status === 'loading' ? "loading..." : status === 'unauthenticated' ? (
-      <div>You are not authenticated</div>
+      <div className="w-full text-[30px] font-bold min-h-screen flex justify-center items-center">
+        You are not authenticated. Please Login
+      </div>
      ) : children}
     </>
   )

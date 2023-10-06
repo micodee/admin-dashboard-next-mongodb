@@ -1,18 +1,10 @@
 import {productTableHeaders } from "@/utils/tableProducts";
 import Table from "../table";
 import { monthMapper } from "@/utils/monthMapper";
-
-const extractAllProduct = async () => {
-  const res = await fetch("http://localhost:3000/api/product/all-product", {
-    method: "GET",
-    cache: "no-store",
-  });
-
-  return await res.json();
-};
+import { ExtractAllProduct } from "@/services/product";
 
 export default async function ProductListing() {
-  const allProducts = await extractAllProduct();
+  const allProducts = await ExtractAllProduct();
   const { data } = allProducts || {};
   return (
     <>
